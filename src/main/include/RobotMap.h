@@ -7,6 +7,13 @@
 
 #pragma once
 
+const int PCM_SLOT_HIGHGEAR = 4;
+const int PCM_SLOT_LOWGEAR = 5;
+const int PCM_BOX_MANIPULATOR_LEFT = 0;
+const int PCM_BOX_MANIPULATOR_LEFT2 = 1;
+const int PCM_BOX_MANIPULATOR_RIGHT = 2;
+const int PCM_BOX_MANIPULATOR_RIGHT2 = 6;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
