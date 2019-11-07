@@ -7,21 +7,28 @@
 
 class PCMHandler{
 	private:
-		frc::Compressor compressor; 
-        frc::Solenoid highgearSol = frc::Solenoid(PCM_SLOT_HIGHGEAR);
-		frc::Solenoid lowgearSol = frc::Solenoid(PCM_SLOT_LOWGEAR);
-		frc::Solenoid clawSolRight = frc::Solenoid(PCM_BOX_MANIPULATOR_RIGHT);
-		frc::Solenoid clawSolLeft = frc::Solenoid(PCM_BOX_MANIPULATOR_LEFT);
-		frc::Solenoid clawSolRight2 = frc::Solenoid(PCM_BOX_MANIPULATOR_RIGHT2);
-		frc::Solenoid clawSolLeft2 = frc::Solenoid(PCM_BOX_MANIPULATOR_LEFT2);
-
+		frc::Compressor m_compressor  = frc::Compressor(PCM_CAN_ID); 
+        frc::Solenoid m_highgearSol = frc::Solenoid(PCM_CAN_ID, PCM_SLOT_HIGHGEAR);
+		frc::Solenoid m_lowgearSol = frc::Solenoid(PCM_CAN_ID, PCM_SLOT_LOWGEAR);
+		frc::Solenoid m_clawSolRight = frc::Solenoid(PCM_CAN_ID, PCM_BOX_MANIPULATOR_RIGHT);
+		frc::Solenoid m_clawSolLeft = frc::Solenoid(PCM_CAN_ID, PCM_BOX_MANIPULATOR_LEFT);
+		frc::Solenoid m_clawSolRight2 = frc::Solenoid(PCM_CAN_ID, PCM_BOX_MANIPULATOR_RIGHT2);
+		frc::Solenoid m_clawSolLeft2 = frc::Solenoid(PCM_CAN_ID, PCM_BOX_MANIPULATOR_LEFT2);
+		PCMHandler();
+   
     public:
-		PCMHandler(int port);
 		void turnOn();
 		void turnOff();
 		void setLowGear(bool value);
 		void setHighGear(bool value);
-		double getCurrent();
 		void openManipulator();
 		void closeManipulator();
+		static PCMHandler* getInstance()
+		{
+            static PCMHandler instance;
+            
+            return &instance;
+        }
+		PCMHandler(PCMHandler const&) = delete;
+        void operator=(PCMHandler const&)  = delete;
 };

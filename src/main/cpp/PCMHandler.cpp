@@ -1,40 +1,33 @@
 #include "PCMHandler.h"
-
-PCMHandler::PCMHandler(int port){
-    compressor = frc::Compressor(port);
-    compressor.SetClosedLoopControl(true);
+PCMHandler::PCMHandler(){
 }
 
 void PCMHandler::turnOn(){
-    compressor.SetClosedLoopControl(true);
+    m_compressor.SetClosedLoopControl(true);
 }
 
 void PCMHandler::turnOff(){
-    compressor.SetClosedLoopControl(false);
+    m_compressor.SetClosedLoopControl(false);
 }
 
 void PCMHandler::setLowGear(bool value){
-    lowgearSol.Set(value);
+    m_lowgearSol.Set(value);
 }
 
 void PCMHandler::setHighGear(bool value){
-    highgearSol.Set(value);
-}
-
-double PCMHandler::getCurrent(){
-    return compressor.GetCompressorCurrent();
+    m_highgearSol.Set(value);
 }
 
 void PCMHandler::openManipulator(){
-    clawSolLeft.Set(false);
-	clawSolRight.Set(false);
-	clawSolLeft2.Set(true);
-	clawSolRight2.Set(true);
+    m_clawSolLeft.Set(false);
+	m_clawSolRight.Set(false);
+	m_clawSolLeft2.Set(true);
+	m_clawSolRight2.Set(true);
 }
 
 void PCMHandler::closeManipulator(){
-    clawSolLeft.Set(true);
-	clawSolRight.Set(true);
-	clawSolLeft2.Set(false);
-	clawSolRight2.Set(false);
+    m_clawSolLeft.Set(true);
+	m_clawSolRight.Set(true);
+	m_clawSolLeft2.Set(false);
+	m_clawSolRight2.Set(false);
 }

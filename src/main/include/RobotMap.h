@@ -7,6 +7,7 @@
 
 #pragma once
 
+const int PCM_CAN_ID = 11;
 const int PCM_SLOT_HIGHGEAR = 4;
 const int PCM_SLOT_LOWGEAR = 5;
 const int PCM_BOX_MANIPULATOR_LEFT = 0;
