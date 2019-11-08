@@ -23,3 +23,7 @@
 // number and the module. For example you with a rangefinder:
 // constexpr int kRangeFinderPort = 1;
 // constexpr int kRangeFinderModule = 1;
+
+const int TALON_TIP = 5;
+const int VICTOR_INTAKE_LEFT = 6;
+const int VICTOR_INTAKE_RIGHT = 7;
