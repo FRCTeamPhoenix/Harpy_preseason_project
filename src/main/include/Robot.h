@@ -12,6 +12,7 @@
 #include <frc/smartdashboard/SendableChooser.h>
 
 #include "OI.h"
+#include "commands/DriveJoystick.h"
 #include "subsystems/HatchManipulator.h"
 
 class Robot : public frc::TimedRobot {
@@ -30,5 +31,7 @@ class Robot : public frc::TimedRobot {
 
   Robot(){};
   ~Robot(){};
+
+  DriveJoystick m_driveJoystick = DriveJoystick();
 
 };
