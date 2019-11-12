@@ -6,3 +6,6 @@ void HatchManipulator::setSpeed(double speed){
     m_talonhatch.Set(speed);
 }
 
+int HatchManipulator::hatchPosition(){
+    return m_talonhatch.GetSelectedSensorPosition();
+}

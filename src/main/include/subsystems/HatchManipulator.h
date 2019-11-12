@@ -14,6 +14,8 @@ class HatchManipulator : public frc::Subsystem {
             return &instance;
         }    
 
+        int hatchPosition();
+
         //prevents copying
         HatchManipulator(HatchManipulator const&) = delete;
         void operator=(HatchManipulator const&) = delete;

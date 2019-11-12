@@ -12,12 +12,17 @@ void DriveJoystick::Initialize(){
 }
 
 void DriveJoystick::Execute(){
-    int HatchSpeed = m_logitechController.GetPOV();
-    if (HatchSpeed == 0){
-        HatchManipulator::getInstance()->setSpeed(-.3);
+    int HatchPov = m_logitechController.GetPOV();
+    int HatchPosition = HatchManipulator::getInstance()->hatchPosition();
+    if (HatchPov == 0 || HatchPov == 45 || HatchPov == 315){
+        HatchManipulator::getInstance()->setSpeed(-.4);
     }
-    else if (HatchSpeed == 180){
+    else if (HatchPov == 180 || HatchPov == 135 || HatchPov == 225){
         HatchManipulator::getInstance()->setSpeed(.2);
+    }
+    // Keeps hatch up when in a specific range
+    else if (HatchPosition <= -700 && HatchPosition >= -1500){
+        HatchManipulator::getInstance()->setSpeed(-.4);
     }
     else {
         HatchManipulator::getInstance()->setSpeed(0.0);
