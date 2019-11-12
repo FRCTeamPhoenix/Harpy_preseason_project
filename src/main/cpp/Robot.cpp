@@ -11,12 +11,9 @@
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-<<<<<<< HEAD
+
 #include "subsystems/BallManipulator.h"
 
-ExampleSubsystem Robot::m_subsystem;
-=======
->>>>>>> 3e254f97cd7768620068d906878d5eff50c59e5b
 OI Robot::m_oi;
 
 void Robot::RobotInit() {
@@ -71,12 +68,9 @@ void Robot::TeleopInit() {
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
-<<<<<<< HEAD
-  BallManipulator::getInstance()-> setSpeedIntake(0.2); 
-=======
+
   PCMHandler::getInstance()->turnOn();
-  PCMHandler::getInstance()->closeManipulator();
->>>>>>> 3e254f97cd7768620068d906878d5eff50c59e5b
+  
 }
 
 
