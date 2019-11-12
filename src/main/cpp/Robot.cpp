@@ -6,19 +6,20 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "PCMHandler.h"
 
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
+<<<<<<< HEAD
 #include "subsystems/BallManipulator.h"
 
 ExampleSubsystem Robot::m_subsystem;
+=======
+>>>>>>> 3e254f97cd7768620068d906878d5eff50c59e5b
 OI Robot::m_oi;
 
 void Robot::RobotInit() {
-  m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-  m_chooser.AddOption("My Auto", &m_myAuto);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 
 /**
@@ -60,11 +61,7 @@ void Robot::AutonomousInit() {
   //   m_autonomousCommand = &m_defaultAuto;
   // }
 
-  m_autonomousCommand = m_chooser.GetSelected();
 
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Start();
-  }
 }
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
@@ -74,8 +71,14 @@ void Robot::TeleopInit() {
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
+<<<<<<< HEAD
   BallManipulator::getInstance()-> setSpeedIntake(0.2); 
+=======
+  PCMHandler::getInstance()->turnOn();
+  PCMHandler::getInstance()->closeManipulator();
+>>>>>>> 3e254f97cd7768620068d906878d5eff50c59e5b
 }
+
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
