@@ -13,6 +13,9 @@
 
 #include "OI.h"
 
+#include "commands/DriveJoystick.h"
+#include "subsystems/HatchManipulator.h"
+
 class Robot : public frc::TimedRobot {
  public:
   static OI m_oi;
@@ -27,7 +30,10 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override;
   void TestPeriodic() override;
 
- private:
-  // Have it null by default so that if testing teleop it
-  // doesn't have undefined behavior and potentially crash.
+
+  Robot(){};
+  ~Robot(){};
+
+  DriveJoystick m_driveJoystick = DriveJoystick();
+
 };

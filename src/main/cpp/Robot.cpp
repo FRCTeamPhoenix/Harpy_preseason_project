@@ -71,6 +71,7 @@ void Robot::TeleopInit() {
 
   PCMHandler::getInstance()->turnOn();
   
+  frc::Scheduler::GetInstance()->AddCommand(&m_driveJoystick);
 }
 
 

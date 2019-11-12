@@ -20,6 +20,8 @@ class BallManipulator : public frc::Subsystem {
 
         void setSpeedArm(const double& speedArm);
         void setSpeedIntake(const double& speedIntake);
+        void openManipulator();
+        void closeManipulator();
 
     private:
         BallManipulator();
