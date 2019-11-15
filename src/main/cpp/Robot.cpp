@@ -7,6 +7,7 @@
 
 #include "Robot.h"
 #include "subsystems/HatchManipulator.h"
+#include "PCMHandler.h"
 
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -14,6 +15,8 @@
 OI Robot::m_oi;
 
 void Robot::RobotInit() {}
+
+
 /**
  * This function is called every robot packet, no matter the mode. Use
  * this for items like diagnostics that you want ran during disabled,
@@ -45,14 +48,19 @@ void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
  * the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit() {}
-  
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 void Robot::TeleopInit() {
   frc::Scheduler::GetInstance()->AddCommand(&m_driveJoystick);
+  // This makes sure that the autonomous stops running when
+  // teleop starts running. If you want the autonomous to
+  // continue until interrupted by another command, remove
+  // this line or comment it out.
+  PCMHandler::getInstance()->turnOn();
+  PCMHandler::getInstance()->closeManipulator();
 }
-  
+
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 void Robot::TestPeriodic() {}
