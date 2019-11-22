@@ -11,3 +11,14 @@ class OI {
  public:
   OI();
 };
+
+const int LOGITECH_RIGHT_TRIGGER = 8;
+const int LOGITECH_LEFT_TRIGGER = 7;
+const int LOGITECH_BUTTON_A = 2;
+const int LOGITECH_BUTTON_B = 3;
+const int LOGITECH_BUTTON_X = 1;
+const int LOGITECH_BUTTON_Y = 4;
+const int LOGITECH_AXIS_LEFT_Y = 1;
+
+const int LOGITECH_BUTTON_LEFT_BUMPER = 5;
+const int LOGITECH_BUTTON_RIGHT_BUMPER = 6;
