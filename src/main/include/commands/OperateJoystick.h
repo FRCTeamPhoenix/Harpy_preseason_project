@@ -3,9 +3,9 @@
 #include <frc/commands/Command.h>
 #include <frc/Joystick.h>
 
-class DriveJoystick : public frc::Command{
+class OperateJoystick : public frc::Command{
     public:
-        DriveJoystick();
+        OperateJoystick();
         void Initialize() override;
         void Execute() override;
         bool IsFinished() override;
@@ -13,6 +13,6 @@ class DriveJoystick : public frc::Command{
         void Interrupted() override;
 
     private:
-        frc::Joystick m_xboxController = frc::Joystick(0);
-        
+        frc::Joystick m_logitechController = frc::Joystick(1);
+
 };

@@ -1,31 +1,24 @@
 #include "commands/DriveJoystick.h"
 
-#include "subsystems/HatchManipulator.h" 
+#include "subsystems/TankSubsystem.h"
+#include "OI.h"
 #include "Robot.h"
 
 DriveJoystick::DriveJoystick(){
-    Requires(HatchManipulator::getInstance());
+    Requires(TankSubsystem::getInstance());
 }
 
 void DriveJoystick::Initialize(){
-    HatchManipulator::getInstance()->setSpeed(0.0);
+    TankSubsystem::getInstance()->setSpeed(0.0, 0.0);
 }
 
 void DriveJoystick::Execute(){
-    int HatchPov = m_logitechController.GetPOV();
-    int HatchPosition = HatchManipulator::getInstance()->hatchPosition();
-    if (HatchPov == 0 || HatchPov == 45 || HatchPov == 315){
-        HatchManipulator::getInstance()->setSpeed(-.4);
-    }
-    else if (HatchPov == 180 || HatchPov == 135 || HatchPov == 225){
-        HatchManipulator::getInstance()->setSpeed(.2);
-    }
-    // Keeps hatch up when in a specific range
-    else if (HatchPosition <= -700 && HatchPosition >= -1500){
-        HatchManipulator::getInstance()->setSpeed(-.4);
-    }
-    else {
-        HatchManipulator::getInstance()->setSpeed(0.0);
+    TankSubsystem::getInstance()->setSpeed(m_xboxController.GetRawAxis(1), m_xboxController.GetRawAxis(5));
+
+    if(m_xboxController.GetRawButton(XBOX_BUTTON_LEFT_BUMPER)){
+         TankSubsystem::getInstance()->setHighGear();
+    }else if(m_xboxController.GetRawButton(XBOX_BUTTON_RIGHT_BUMPER)){
+         TankSubsystem::getInstance()->setLowGear();
     }
 }
 
@@ -34,7 +27,7 @@ bool DriveJoystick::IsFinished(){
 }
 
 void DriveJoystick::End(){
-    HatchManipulator::getInstance()->setSpeed(0.0);
+    TankSubsystem::getInstance()->setSpeed(0.0, 0.0);
 }
 
 void DriveJoystick::Interrupted(){

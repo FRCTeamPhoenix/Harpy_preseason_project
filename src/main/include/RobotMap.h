@@ -22,6 +22,10 @@ const int PCM_BOX_MANIPULATOR_RIGHT2 = 6;
  * floating around.
  */
 const int TALON_HATCH_MANIP = 8;
+const int TALON_FRONT_LEFT = 1;
+const int TALON_FRONT_RIGHT = 2;
+const int TALON_BACK_LEFT = 3;
+const int TALON_BACK_RIGHT = 4;
 // For example to map the left and right motors, you could define the
 // following variables to use with your drivetrain subsystem.
 // constexpr int kLeftMotor = 1;

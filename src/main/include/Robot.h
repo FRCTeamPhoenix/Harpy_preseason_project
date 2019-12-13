@@ -14,9 +14,8 @@
 #include "OI.h"
 
 #include "commands/DriveJoystick.h"
+#include "commands/OperateJoystick.h"
 #include "subsystems/HatchManipulator.h"
-
-
 
 class Robot : public frc::TimedRobot {
  public:
@@ -35,6 +34,7 @@ class Robot : public frc::TimedRobot {
   Robot(){};
   ~Robot(){};
 
+  OperateJoystick m_operateJoystick = OperateJoystick();
   DriveJoystick m_driveJoystick = DriveJoystick();
 
  private:
